@@ -1,0 +1,32 @@
+# Local SDKs and package caches
+.tools/
+.pub-cache/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+coverage/
+
+# Local configuration and credentials
+config/*.json
+!config/*.example.json
+.env
+.env.*
+!.env.example
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+
+# IDE and operating system files
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Generated Android files
+android/.gradle/
+android/captures/
+android/app/debug/
+android/app/profile/
+android/app/release/
