@@ -20,6 +20,7 @@ android/key.properties
 
 # IDE and operating system files
 .idea/
+.vscode/playhaven.local.code-workspace
 *.iml
 .DS_Store
 Thumbs.db

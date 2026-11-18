@@ -1,5 +1,11 @@
 {
+  "dart.flutterSdkPath": ".tools/flutter",
   "dart.flutterSdkPaths": [".tools/flutter"],
+  "java.autobuild.enabled": false,
+  "java.import.gradle.enabled": false,
+  "java.import.maven.enabled": false,
+  "java.configuration.updateBuildConfiguration": "disabled",
+  "gradle.autoDetect": "off",
   "search.exclude": {
     "**/.tools": true,
     "**/build": true

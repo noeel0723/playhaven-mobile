@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "PlayHaven: Periksa tooling",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/flutter.ps1", "doctor", "-v"],
+      "problemMatcher": []
+    },
+    {
+      "label": "PlayHaven: Cari perangkat Android",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/flutter.ps1", "devices"],
+      "problemMatcher": []
+    },
+    {
+      "label": "PlayHaven: Build APK debug",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/flutter.ps1", "build", "apk", "--debug"],
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

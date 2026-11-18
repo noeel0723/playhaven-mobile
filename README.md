@@ -17,24 +17,43 @@ Komunitas dan Profil masih berupa layar awal. Login, data live, sinkronisasi, pe
 
 Gunakan **Flutter 3.50.0 stable / Dart 3.14.0**. Sumber SDK: [Flutter resmi](https://docs.flutter.dev/install). SDK lokal untuk persiapan berada di `.tools/flutter` dan diabaikan Git; proyek tidak mengubah PATH global.
 
-1. Instal Android Studio, lalu melalui SDK Manager instal Android SDK Platform, Build-Tools, Command-line Tools, Platform-Tools, dan Android Emulator. Ikuti [panduan Android Flutter](https://docs.flutter.dev/platform-integration/android/setup) untuk versi yang sesuai.
-2. Selesaikan lisensi dan periksa perangkat:
+Setup yang disarankan: **VS Code + ekstensi Flutter/Dart + ponsel Android fisik**. Android Studio dan emulator tidak diperlukan. Ekstensi membantu edit/debug; build Android tetap memerlukan JDK dan Android SDK command-line.
+
+1. Instal ekstensi **Flutter** (`Dart-Code.flutter`) di VS Code; ekstensi Dart ikut dipasang. Tooling portabel dapat disiapkan dari root proyek:
 
    ```powershell
+   .\scripts\setup-android.ps1
+   ```
+
+   Script mengunduh Temurin JDK 21 dan Android Command-Line Tools dari sumber resmi, memeriksa SHA-256, lalu menyimpannya di `.tools`. Script tidak mengubah PATH global atau instalasi SDK lain.
+2. Baca dan setujui lisensi SDK yang diperlukan secara interaktif, lalu instal paket Android minimum:
+
+   ```powershell
+   .\scripts\setup-android.ps1 -ReviewLicenses -InstallPackages
+   ```
+
+   Paket awal: Platform-Tools (`adb`), Android API 36, dan Build-Tools 36.0.0. Build pertama juga dapat mengunduh Gradle, dependency Android, dan NDK yang diminta Flutter; ukurannya lebih besar daripada ekstensi editor.
+3. Buka workspace lokal yang dibuat script dan periksa tooling:
+
+   ```powershell
+   code .vscode/playhaven.local.code-workspace
    .\scripts\flutter.ps1 doctor -v
-   .\scripts\flutter.ps1 doctor --android-licenses
    .\scripts\flutter.ps1 devices
    ```
 
-3. Jalankan emulator dari Android Studio Device Manager, atau sambungkan ponsel Android dengan USB debugging aktif dan izinkan komputer pada ponsel.
-4. Dari root proyek:
+   Workspace lokal mengatur Java/Android SDK untuk ekstensi, debugger, dan terminal VS Code. File ini diabaikan Git karena mengandung path komputer. Buka terminal baru setelah workspace dimuat. `flutter doctor` bisa memberi peringatan Android Studio tidak terpasang; yang diperlukan adalah Android toolchain yang berhasil, bukan IDE tersebut.
+4. Aktifkan **Developer options > USB debugging** di ponsel, sambungkan dengan kabel USB data, buka kunci layar, dan setujui **Allow USB debugging** pada ponsel. Jika Windows belum mengenali perangkat, periksa mode USB/kabel dan driver OEM.
+5. Pilih ponsel dari status bar VS Code lalu tekan **F5** dengan konfigurasi **PlayHaven · Demo**. Alternatif terminal:
 
    ```powershell
    .\scripts\flutter.ps1 pub get
-   .\scripts\flutter.ps1 run
+   .\scripts\flutter.ps1 devices
+   .\scripts\flutter.ps1 run -d ID_PERANGKAT
    ```
 
-Wrapper memilih SDK lokal jika tersedia, atau `flutter` di PATH. Cache paket dan temporary tooling lokal disimpan di `.tools`. Jika memakai SDK sendiri, perintah `flutter` biasa juga dapat digunakan. Di VS Code, pilih SDK melalui **Flutter: Change SDK** bila SDK lokal belum dikenali, lalu pilih konfigurasi **PlayHaven · Demo**.
+Wrapper memilih SDK lokal jika tersedia, atau `flutter` di PATH, serta menggunakan JDK/SDK portabel bila sudah disiapkan. Cache paket, Gradle, dan temporary tooling lokal disimpan di `.tools`; environment proses dipulihkan setelah perintah selesai. Jika memakai SDK sendiri, perintah `flutter` biasa juga dapat digunakan. Di VS Code tersedia task pemeriksaan tooling, pencarian perangkat, dan build APK melalui **Terminal > Run Task**.
+
+Panduan lebih lengkap: [VS Code dan ponsel Android](docs/vscode-android.md). Referensi resmi: [Flutter di VS Code](https://docs.flutter.dev/tools/vs-code), [Android command-line tools](https://developer.android.com/tools).
 
 ## Struktur
 
