@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/widgets/empty_state.dart';
 import '../../features/catalog/presentation/catalog_page.dart';
+import '../../features/catalog/presentation/discover_page.dart';
 import '../../features/catalog/presentation/game_detail_page.dart';
 import '../../features/community/presentation/community_page.dart';
 import '../../features/library/presentation/library_page.dart';
@@ -50,6 +51,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: '/discover',
+        builder: (context, state) => const DiscoverPage(),
       ),
       GoRoute(
         path: '/games/:id',

@@ -1,10 +1,11 @@
 # PlayHaven Mobile
 
-Fondasi aplikasi Flutter untuk **Android dahulu**, dengan kode Dart yang dapat diperluas ke iOS nanti. Versi awal menggunakan data game fiktif dan tidak terhubung ke akun atau backend produksi.
+Fondasi aplikasi Flutter untuk **Android dahulu**, dengan kode Dart yang dapat diperluas ke iOS nanti. Versi awal menggunakan pratinjau katalog web dan tidak terhubung ke akun atau backend produksi.
 
 ## Yang sudah tersedia
 
-- Tema gelap Material 3 dan navigasi Beranda, Koleksi, Komunitas, Profil.
+- Tema hitam/krem mengikuti web, banner dengan crop portrait, poster **Popular games this week**, dan enam kartu **A life in games. A place to keep it.**
+- Navigasi Beranda, Koleksi, Komunitas, Profil; pencarian tersedia melalui ikon pencarian, Explore games, dan View all.
 - Katalog demo, pencarian judul/genre, detail game, tambah/hapus koleksi selama sesi aplikasi.
 - Keadaan loading, error dengan coba lagi, hasil kosong, dan game tidak ditemukan.
 - Riverpod untuk dependency injection dan state, go_router untuk navigasi, HTTP client dengan timeout dan pemetaan error.
@@ -12,6 +13,8 @@ Fondasi aplikasi Flutter untuk **Android dahulu**, dengan kode Dart yang dapat d
 - Pengujian konfigurasi, transport JSON, pencarian, navigasi, dan koleksi.
 
 Komunitas dan Profil masih berupa layar awal. Login, data live, sinkronisasi, penyimpanan koleksi setelah aplikasi ditutup, push notification, serta rilis Play Store belum diimplementasikan.
+
+Artwork dan urutan enam game merupakan snapshot beranda web pada 2026-11-18; urutan popularitas belum dihitung live di mobile. Diary, game lists, dan statistik menampilkan keterangan **Soon** saat dibuka. Rujukan gambar tercatat di [assets/README.md](assets/README.md).
 
 ## Tooling
 

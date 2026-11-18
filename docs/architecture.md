@@ -22,7 +22,8 @@ Halaman/widget
 
 | Rute | Tujuan |
 | --- | --- |
-| `/` | Katalog dan pencarian |
+| `/` | Beranda: banner, poster populer, dan kartu fitur |
+| `/discover` | Pencarian judul/genre dan daftar katalog |
 | `/library` | Koleksi demo |
 | `/community` | Layar awal komunitas |
 | `/profile` | Layar awal profil |
@@ -36,6 +37,7 @@ Rute detail dan URL tidak dikenal mempunyai empty/error state. Konfigurasi Andro
 - go_router: navigasi deklaratif, shell tab, dan perluasan auth redirect.
 - `http`: transport kecil untuk request JSON; client ditutup melalui `ref.onDispose`.
 - `material_ui`: komponen Material untuk Flutter 3.50; tema berada dalam satu file.
+- `flutter_svg`: logo vektor yang digunakan bersama referensi web.
 - Tidak ada penyimpanan token, analytics, SDK RAWG, atau koneksi langsung database pada fondasi ini.
 
 ## Konvensi
@@ -45,7 +47,7 @@ Rute detail dan URL tidak dikenal mempunyai empty/error state. Konfigurasi Andro
 - Hindari menampilkan body error backend karena dapat berisi detail internal.
 - Jangan mencatat Authorization header atau token.
 - String UI saat ini bahasa Indonesia. Tambahkan ARB dan `flutter_localizations` saat kebutuhan bahasa disepakati.
-- Warna ungu gelap dan ikon bawaan adalah tema awal; selaraskan dengan aset serta font resmi PlayHaven ketika referensi tersedia.
+- Beranda memakai hitam/krem dari web, logo SVG, serta artwork lokal dengan crop portrait. Roboto dipakai sebagai font native Android; urutan game masih merupakan snapshot pratinjau.
 - Tambahkan dependency hanya saat fiturnya diimplementasikan. Secure storage dan persistence belum diperlukan untuk demo.
 
 Pemisahan UI/data mengikuti [rekomendasi arsitektur Flutter](https://docs.flutter.dev/app-architecture/recommendations), dengan lapisan tambahan sesuai kebutuhan aplikasi.

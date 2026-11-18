@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../domain/game.dart';
+import 'game_artwork.dart';
 
 class GameTile extends StatelessWidget {
   const GameTile({required this.game, super.key});
@@ -17,16 +18,12 @@ class GameTile extends StatelessWidget {
       child: ListTile(
         contentPadding: const EdgeInsets.all(12),
         leading: ExcludeSemantics(
-          child: Container(
+          child: SizedBox(
             width: 56,
             height: 56,
-            decoration: BoxDecoration(
-              color: Color(game.coverColor),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Icon(
-              Icons.sports_esports_outlined,
-              color: Colors.white,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: GameArtwork(game: game, decodeWidth: 180),
             ),
           ),
         ),

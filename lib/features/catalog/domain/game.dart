@@ -6,6 +6,7 @@ class Game {
     required this.description,
     required this.platforms,
     required this.coverColor,
+    this.coverAsset,
   });
 
   final String id;
@@ -14,4 +15,5 @@ class Game {
   final String description;
   final List<String> platforms;
   final int coverColor;
+  final String? coverAsset;
 }

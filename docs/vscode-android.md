@@ -61,6 +61,7 @@ Jika folder proyek dipindah, jalankan ulang `setup-android.ps1` untuk memperbaru
 | Gejala | Tindakan |
 | --- | --- |
 | `unauthorized` | Buka kunci ponsel dan setujui prompt USB debugging. Jika perlu cabut/pasang kabel. |
+| `INSTALL_FAILED_USER_RESTRICTED` | Pemasangan dibatalkan atau dibatasi ponsel. Buka kunci layar dan setujui dialog pemasangan. Pada Xiaomi/MIUI, periksa **Setelan tambahan > Opsi pengembang > Instal melalui USB**. |
 | Ponsel tidak muncul | Coba kabel data/port lain, periksa mode USB, dan instal driver resmi OEM jika Windows membutuhkannya. |
 | Java 8 dipakai saat build | Gunakan wrapper proyek atau workspace lokal; periksa `JAVA_HOME` di terminal baru. |
 | Android command-line tools tidak ditemukan | Jalankan `setup-android.ps1` dan periksa struktur `cmdline-tools/latest/bin`. |

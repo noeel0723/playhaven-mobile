@@ -19,10 +19,12 @@ Future<void> launchApp(WidgetTester tester) async {
 void main() {
   testWidgets('pencarian menampilkan hasil dan keadaan kosong', (tester) async {
     await launchApp(tester);
-    await tester.enterText(find.byType(TextField), 'Racing');
+    await tester.tap(find.byTooltip('Cari game'));
     await tester.pumpAndSettle();
-    expect(find.text('Neon Circuit'), findsOneWidget);
-    expect(find.text('Orbit Wanderer'), findsNothing);
+    await tester.enterText(find.byType(TextField), 'RPG');
+    await tester.pumpAndSettle();
+    expect(find.text('Genshin Impact'), findsOneWidget);
+    expect(find.text('A Space for the Unbound'), findsNothing);
     await tester.enterText(find.byType(TextField), 'tidak-ada');
     await tester.pumpAndSettle();
     expect(find.text('Game tidak ditemukan'), findsOneWidget);
@@ -31,7 +33,12 @@ void main() {
 
   testWidgets('detail dan koleksi berbagi state lintas tab', (tester) async {
     await launchApp(tester);
-    await tester.tap(find.text('Orbit Wanderer'));
+    final poster = find.byKey(
+      const ValueKey('popular-game-preview-a-space-for-the-unbound'),
+    );
+    await tester.ensureVisible(poster);
+    await tester.pumpAndSettle();
+    await tester.tap(poster);
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('Tambahkan ke koleksi'));
     await tester.pumpAndSettle();
@@ -43,8 +50,8 @@ void main() {
     await tester.tap(find.text('Koleksi'));
     await tester.pumpAndSettle();
     expect(find.text('Koleksi saya'), findsOneWidget);
-    expect(find.text('Orbit Wanderer'), findsOneWidget);
-    await tester.tap(find.text('Orbit Wanderer'));
+    expect(find.text('A Space for the Unbound'), findsOneWidget);
+    await tester.tap(find.text('A Space for the Unbound'));
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('Hapus dari koleksi'));
     await tester.pumpAndSettle();
@@ -89,6 +96,8 @@ void main() {
         child: const PlayHavenApp(),
       ),
     );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Cari game'));
     await tester.pumpAndSettle();
     expect(find.text('Katalog belum dapat dimuat'), findsOneWidget);
     await tester.ensureVisible(find.text('Coba lagi'));

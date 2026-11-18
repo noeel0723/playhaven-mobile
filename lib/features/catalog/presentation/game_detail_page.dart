@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../library/presentation/library_controller.dart';
 import 'catalog_providers.dart';
+import 'widgets/game_artwork.dart';
 
 class GameDetailPage extends ConsumerWidget {
   const GameDetailPage({required this.gameId, super.key});
@@ -49,21 +50,11 @@ class GameDetailPage extends ConsumerWidget {
                 return ListView(
                   padding: const EdgeInsets.all(20),
                   children: [
-                    Container(
+                    SizedBox(
                       height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        gradient: LinearGradient(
-                          colors: [
-                            Color(game.coverColor),
-                            theme.colorScheme.surface,
-                          ],
-                        ),
-                      ),
-                      child: const Icon(
-                        Icons.sports_esports_outlined,
-                        size: 80,
-                        color: Colors.white,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: GameArtwork(game: game, decodeWidth: 1080),
                       ),
                     ),
                     const SizedBox(height: 24),
